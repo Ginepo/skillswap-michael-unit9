@@ -6,6 +6,7 @@
     <title>Skill Swap</title>
     <link rel="stylesheet" href="styles.css">
     <script src="skillswap-functions.js" defer></script>
+    <script src="api-service.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -38,58 +39,57 @@
     <button type="button" data-category="Music">Music</button>
     <button type="button" data-category="Career">Career</button>
     <button type="button" data-category="Education">Education</button>
-    <button type="button" data-category="Languages">Languages</button>
+    <button type="button" data-category="Language">Languages</button>
 </div>
 <p id="filter-message" role="status"></p>
-<div class="skill-grid">
-    <article class="skill-card">
-        <h3>Python Basics</h3>
-        <p>Learn variables, loops, and simple Python programs.</p>
-        <p><strong>Provider:</strong> Alex Rivera</p>
-        <p><strong>Price:</strong> $20/hour</p>
-        <button type="button" class="details-button"
-                aria-expanded="false" aria-controls="python-details">
-            Show details
-        </button>
-        <p id="python-details" hidden>
-            Beginner-friendly sessions with coding exercises.
-        </p>
-    </article>
-
-    <article class="skill-card">
-        <h3>Math Tutoring</h3>
-        <p>Get help with algebra and everyday math problems.</p>
-        <p><strong>Provider:</strong> Jamie Lee</p>
-        <p><strong>Price:</strong> $15/hour</p>
-        <button type="button" class="details-button"
-                aria-expanded="false" aria-controls="math-details">
-            Show details
-        </button>
-        <p id="math-details" hidden>
-            Practice equations step by step at your own pace.
-        </p>
-    </article>
-
-    <article class="skill-card">
-        <h3>Spanish Conversation</h3>
-        <p>Practice speaking Spanish in everyday situations.</p>
-        <p><strong>Provider:</strong> Sofia Martinez</p>
-        <p><strong>Price:</strong> $18/hour</p>
-        <button type="button" class="details-button"
-                aria-expanded="false" aria-controls="spanish-details">
-            Show details
-        </button>
-        <p id="spanish-details" hidden>
-            Practice pronunciation, vocabulary, and conversation.
-        </p>
-    </article>
-</div>
+<div class="skill-grid" aria-live="polite"></div>
         </section>
 
-        <section id="offer" aria-labelledby="offer-title">
-            <h2 id="offer-title">Offer Your Skills</h2>
-            <p>Tutor profile creation is planned for a future update.</p>
-        </section>
+<section id="offer" aria-labelledby="offer-title">
+    <h2 id="offer-title">Offer Your Skills</h2>
+
+    <form id="skill-form">
+        <p>
+            <label for="skill-title">Skill title</label>
+            <input id="skill-title" name="title"
+                   type="text" required maxlength="100">
+        </p>
+
+        <p>
+            <label for="skill-provider">Your name</label>
+            <input id="skill-provider" name="provider"
+                   type="text" required maxlength="100">
+        </p>
+
+        <p>
+            <label for="skill-category">Category</label>
+            <select id="skill-category" name="category" required>
+                <option value="">Choose a category</option>
+                <option value="Programming">Programming</option>
+                <option value="Music">Music</option>
+                <option value="Career">Career</option>
+                <option value="Education">Education</option>
+                <option value="Language">Languages</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="skill-price">Hourly price ($, use 0 for free)</label>
+            <input id="skill-price" name="price"
+                   type="number" min="0" step="0.01" required>
+        </p>
+
+        <p>
+            <label for="skill-description">Description</label>
+            <textarea id="skill-description" name="description"
+                      rows="4" required maxlength="1000"></textarea>
+        </p>
+
+        <button type="submit">Add Skill</button>
+    </form>
+
+    <p id="skill-form-message" role="status"></p>
+</section>
 
         <section id="about" aria-labelledby="about-title">
             <h2 id="about-title">About Skill Swap</h2>
